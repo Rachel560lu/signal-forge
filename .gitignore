@@ -1,0 +1,12 @@
+# Reference projects — never commit (private local repos)
+reference/
+
+# Personal inbox captures — local working files
+inbox/*
+!inbox/.gitkeep
+
+# Machine-specific scripts
+scripts/*.plist
+
+# OS
+.DS_Store
