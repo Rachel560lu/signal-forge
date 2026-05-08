@@ -1,6 +1,6 @@
-# Great Ideas — AI Opportunity Radar
+# Signal Forge
 
-A local-first research workspace for tracking the AI builder landscape and developing product intuition.
+A local-first research workspace for turning raw AI builder signals into verifiable product opportunities.
 
 ## What this is
 
@@ -13,7 +13,7 @@ A structured folder + Claude Code workflow for turning raw AI signals into scope
 Open Claude Code in this directory. `CLAUDE.md` loads automatically and gives Claude the full context — no setup needed each session.
 
 ```bash
-cd great-ideas
+cd signal-forge
 claude
 ```
 

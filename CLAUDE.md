@@ -1,4 +1,4 @@
-# Great Ideas — AI Opportunity Radar
+# Signal Forge — AI Opportunity Radar
 
 ## Purpose
 This workspace tracks the AI landscape to find tool-building opportunities.
