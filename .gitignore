@@ -1,6 +1,9 @@
 # Reference
 reference/
 
+# Design docs — kept local, not tracked or included in PRs
+docs/specs/
+
 # Personal inbox captures — local working files
 inbox/*
 !inbox/.gitkeep
