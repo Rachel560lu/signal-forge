@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:reddit.com)",
+      "WebFetch(domain:news.ycombinator.com)",
+      "WebFetch(domain:hn.algolia.com)",
+      "Bash(python3 *)",
+      "Read(data/**)",
+      "Read(public/**)",
+      "Read(ideas/**)",
+      "Read(taste/**)",
+      "Read(skills/**)",
+      "Read(workflows/**)",
+      "Write(data/**)",
+      "Write(public/**)",
+      "Write(ideas/**)",
+      "Write(taste/**)",
+      "Write(pain-points/**)",
+      "Write(tools-research/**)"
+    ]
+  }
+}

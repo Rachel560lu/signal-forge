@@ -1,12 +1,23 @@
-# Reference projects — never commit (private local repos)
+# Reference
 reference/
 
 # Personal inbox captures — local working files
 inbox/*
 !inbox/.gitkeep
 
+# Reader idea files are local working products — keep only the example
+ideas/*
+!ideas/EXAMPLE.md
+
 # Machine-specific scripts
 scripts/*.plist
 
 # OS
 .DS_Store
+
+# Internal agent collaboration context
+CONTEXT.md
+
+# Python
+__pycache__/
+*.pyc

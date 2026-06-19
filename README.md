@@ -1,74 +1,82 @@
 # Signal Forge
 
-A local-first research workspace for turning raw AI builder signals into verifiable product opportunities.
+> A curated, public archive of AI builder signals — refreshed every three days.
 
-## What this is
+Signal Forge tracks what AI builders are actually shipping, discussing, and
+struggling with. Every three days it scans GitHub Trending, Reddit, and Hacker
+News, keeps only the signals that matter to people building with AI, and commits
+a dated capture to [`inbox/`](inbox/).
 
-A structured folder + Claude Code workflow for turning raw AI signals into scoped product opportunities. Not a bookmark folder — a taste-building system.
+You don't have to run anything. **Just read the captures.**
 
-**Focus areas:** AI Agents · Vibe Coding
+## What You Get
 
-## How it works
+Each file in [`inbox/`](inbox/) is one snapshot in time:
 
-Open Claude Code in this directory. `CLAUDE.md` loads automatically and gives Claude the full context — no setup needed each session.
-
-```bash
-cd signal-forge
-claude
+```text
+inbox/YYYY-MM-DD_phase0.md
 ```
 
-## Workflow
+Every capture has three sections, with 5–10 hand-filtered items each:
 
-### Phase 0 — Taste Building (ongoing)
-Every 3 days, a script auto-fetches GitHub Trending + Reddit + HN into `inbox/`. Browse the file, fill in `What made me stop:` for anything interesting. Once a week, ask Claude to triage.
+- **GitHub Trending** — new AI agent frameworks, LLM tooling, MCP servers, dev tools
+- **Reddit** — pain points, workflows, and tools surfacing in r/LocalLLaMA and r/ChatGPTCoding
+- **Hacker News** — Show HN / Ask HN posts about AI tools, coding assistants, and agent workflows
 
-```
-"triage phase 0 inbox"
-```
+Each item includes a link and a one-line "what made me stop" note explaining why
+it's worth your attention.
 
-### Market Scan — On demand
-Research what already exists in a specific space before evaluating an idea.
+## Curation Standard
 
-```
-"market scan [topic]"
-```
+Signal Forge is opinionated on purpose. The value is in what gets left out.
 
-### Scan Pain Points — Weekly
-Find recurring themes across all collected signals.
+**Kept:** AI agents, LLMs, code generation, MCP, vibe coding, developer tools,
+agent frameworks, real builder pain.
 
-```
-"scan pain points"
-```
+**Dropped:** games, generic web frameworks, data science notebooks, hype with no
+signal, single viral posts mistaken for trends.
 
-### Evaluate an Opportunity — When ready
-Deep evaluation with scorecard.
+## How To Use It
 
-```
-"evaluate this opportunity: [description]"
-```
+- **Browse by date** — open the latest file in [`inbox/`](inbox/) for this week's signals.
+- **Track over time** — the git history is a timeline; `git log inbox/` shows every refresh.
+- **Search across captures** — `grep -ri "mcp" inbox/` to follow a theme.
 
-## Folder Structure
+## Go From Signal To Idea (Phase 1)
 
-```
-inbox/          raw captures, auto-fetched every 3 days
-pain-points/    organized pain points by theme
-opportunities/  tool ideas with feasibility notes
-news/           weekly summaries
-tools-research/ deep dives on specific ideas
-templates/      reusable research prompts
-scripts/        automation scripts
+Reading is enough. But if a signal sparks something, the repo ships two skills your
+own agent can run — clone the repo, open it in Claude Code / Cursor / Codex, and the
+agent discovers them via `SKILL.md`.
+
+```text
+browse inbox/  →  pick a signal  →  shape-idea  →  deep-dive
 ```
 
-## Automation
+- **`shape-idea`** — turn a signal into a testable idea, written to `ideas/<slug>.md`.
+  > "Shape this into an idea: <paste an inbox signal>"
+- **`deep-dive`** — research the idea across four dimensions (similar projects,
+  reusable open-source tools, existing solutions, the differentiation gap) and append
+  the findings to the same file.
+  > "Deep dive ideas/<slug>.md"
 
-`scripts/fetch_inbox.py` fetches GitHub Trending + Reddit (r/LocalLLaMA, r/ChatGPTCoding) + HN every run. Scheduled locally via launchd every 3 days.
+Your idea files stay local (gitignored) — they don't flow back into the public
+dataset. See [`ideas/EXAMPLE.md`](ideas/EXAMPLE.md) for a full walkthrough.
 
-```bash
-python3 scripts/fetch_inbox.py  # run manually anytime
-```
+`deep-dive` needs no setup. It uses the unauthenticated GitHub API (60 req/hour),
+which covers one idea. If you hit a rate limit, optionally set a `GITHUB_TOKEN` env
+var to raise it to 5000/hour.
 
-## Dependencies
+## How It's Made
 
-```bash
-pip3 install requests beautifulsoup4
-```
+Collection runs on a [Claude Cloud Routine](https://claude.ai/code/routines) on a
+3-day cron. The routine fetches each source, applies the curation standard above,
+and commits the capture via the GitHub API. There is no code in this repo to run —
+the dataset *is* the product.
+
+## Roadmap
+
+- **Phase 0:** automated 3-day capture of raw, curated signals.
+- **Phase 1 (now):** `shape-idea` + `deep-dive` skills to take any signal from feed
+  to a researched idea.
+- **Phase 2 (next):** synthesis across captures — `recommend-signals` (taste-based)
+  and `cluster-pain` (recurring pain clusters).
